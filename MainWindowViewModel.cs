@@ -153,11 +153,11 @@ namespace C_Sharp_2
 
         public RelayCommand ProceedCommand
         {
-            get { return _ageCalc ?? (_ageCalc = new RelayCommand(AgeCalcImpl/*,
+            get { return _ageCalc ?? (_ageCalc = new RelayCommand(AgeCalcImpl,
                              o => 
                                  !String.IsNullOrWhiteSpace(_firstName) &&
                                  !String.IsNullOrWhiteSpace(_lastName) &&
-                                 !String.IsNullOrWhiteSpace(_email) &&
+                                 !String.IsNullOrWhiteSpace(_email) /*&&
                                  _dateOfBirth != DateTime.MinValue*/
                                  )); }
         }
