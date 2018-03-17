@@ -32,11 +32,11 @@ namespace C_Sharp_2
         private void ShowResult()
         {
 
-            ((MainWindowViewModel) DataContext).FName =
-                "Your first name: " + ((MainWindowViewModel) DataContext).FName;
+            ((MainWindowViewModel) DataContext).FirstName =
+                "Your first name: " + ((MainWindowViewModel) DataContext).FirstName;
 
-            ((MainWindowViewModel) DataContext).LName =
-                "Your last name: " + ((MainWindowViewModel) DataContext).LName;
+            ((MainWindowViewModel) DataContext).LastName =
+                "Your last name: " + ((MainWindowViewModel) DataContext).LastName;
 
             ((MainWindowViewModel) DataContext).Email = 
                 "Your email: " + ((MainWindowViewModel) DataContext).Email;

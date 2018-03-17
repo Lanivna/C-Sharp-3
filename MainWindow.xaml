@@ -12,6 +12,47 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.ColumnSpan="1" Grid.Row="1" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
+                   FontFamily="Arial">
+            Your first name:
+        </TextBlock>
+        <TextBox Grid.ColumnSpan="1" Grid.Row="2" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
+                 FontStyle="Italic" FontFamily="Arial" MaxLength="25"
+                 Text="{Binding FisrtName, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <TextBlock Grid.ColumnSpan="1" Grid.Row="3" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
+                   FontFamily="Arial">
+            Your last name:
+        </TextBlock>
+        <TextBox Grid.ColumnSpan="1" Grid.Row="4" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
+                 FontStyle="Italic" FontFamily="Arial" MaxLength="25"
+                 Text="{Binding LastName, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <TextBlock Grid.ColumnSpan="1" Grid.Row="5" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
+                   FontFamily="Arial">
+            Your email:
+        </TextBlock>
+        <TextBox Grid.ColumnSpan="1" Grid.Row="6" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
+                 FontStyle="Italic" FontFamily="Arial" MaxLength="25"
+                 Text="{Binding Email, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <StackPanel Grid.Row ="7" Grid.ColumnSpan="2" Orientation="Vertical">
+            <Label Content="Your date of birth: "></Label>
+            <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Text="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+        </StackPanel>
+
+        <TextBlock Grid.Row="8" Text="{Binding Adult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="9" Text="{Binding Western, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="10" Text="{Binding Chinese, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="11" Text="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+
+        <Button Content="Proceed" Grid.ColumnSpan="1" Grid.Row="12" Margin="5" Command="{Binding ProceedCommand}" IsEnabled="{Binding CanExecute}"></Button>
     </Grid>
 </Window>

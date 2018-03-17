@@ -23,7 +23,7 @@ namespace C_Sharp_2
             _lastName = lastName;
             _email = email;
             _dateOfBirth = dateOfBirth;
-            _age = AgeCheck();
+            _age = AgeCount();
             _sun = SunZodiac();
             _chinese = ChineseZodiac();
         }
@@ -48,7 +48,7 @@ namespace C_Sharp_2
             private set { _dateOfBirth = value; }
         }
         
-        public int AgeCheck()
+        public int AgeCount()
         {
             DateTime today = DateTime.Today;
             int _age = today.Year - _dateOfBirth.Year;

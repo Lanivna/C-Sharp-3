@@ -18,7 +18,7 @@ namespace C_Sharp_2
         private string _adult;
         private string _sun;
         private string _chinese;
-
+       
         private RelayCommand _proceedCommand;
         private bool _canExecute;
         private RelayCommand _ageCalc;
@@ -32,7 +32,7 @@ namespace C_Sharp_2
             CanExecute = true;
         }
 
-        public string FName
+        public string FirstName
         {
             get { return _firstName; }
             set
@@ -42,7 +42,7 @@ namespace C_Sharp_2
             }
         }
 
-        public string LName
+        public string LastName
         {
             get { return _lastName; }
             set
@@ -133,12 +133,8 @@ namespace C_Sharp_2
             }
         }
 
-        public RelayCommand CountAge
-        {
-            get { return _ageCalc ?? (_ageCalc = new RelayCommand(CalcImpl)); }
-        }
 
-        private async void CalcImpl(object o)
+        private async void AgeCalcImpl(object o)
         {
             _showLoaderAction.Invoke(true);
             CanExecute = false;
@@ -152,9 +148,6 @@ namespace C_Sharp_2
                 MessageBox.Show($"Wrong input!");
             else
             {
-                if (_dateOfBirth.DayOfYear == DateTime.Today.DayOfYear)
-                { MessageBox.Show($"Happy b-day to you! Happy b-day, dear {FName}!");}
-
                 Adult = $"{StationManager.CurrentPerson.IsAdult}";
                 SunSign = $"{StationManager.CurrentPerson.SunSign}";
                 ChineseSign = $"{StationManager.CurrentPerson.ChineseSign}";
@@ -171,7 +164,7 @@ namespace C_Sharp_2
         {
             get
             {
-                return _proceedCommand ?? (_proceedCommand = new RelayCommand( CalcImpl,
+                return _proceedCommand ?? (_proceedCommand = new RelayCommand( AgeCalcImpl,
                            o => !String.IsNullOrWhiteSpace(_firstName) &&
                                 !String.IsNullOrWhiteSpace(_lastName) &&
                                 !String.IsNullOrWhiteSpace(_email) &&
