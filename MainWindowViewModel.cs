@@ -72,15 +72,6 @@ namespace C_Sharp_2
             }
         }
 
-        public string Date
-        {
-            get { return Date; }
-            set
-            {
-                Date = _dateOfBirth.ToShortDateString(); 
-                OnPropertyChanged();
-            }
-        }
 
         public string Adult
         {
@@ -162,20 +153,15 @@ namespace C_Sharp_2
 
         public RelayCommand ProceedCommand
         {
-            get
-            {
-                return _proceedCommand ?? (_proceedCommand = new RelayCommand( AgeCalcImpl,
-                           o => !String.IsNullOrWhiteSpace(_firstName) &&
-                                !String.IsNullOrWhiteSpace(_lastName) &&
-                                !String.IsNullOrWhiteSpace(_email) &&
-                                DateCheck(_dateOfBirth)));
-            }
+            get { return _ageCalc ?? (_ageCalc = new RelayCommand(AgeCalcImpl/*,
+                             o => 
+                                 !String.IsNullOrWhiteSpace(_firstName) &&
+                                 !String.IsNullOrWhiteSpace(_lastName) &&
+                                 !String.IsNullOrWhiteSpace(_email) &&
+                                 _dateOfBirth != DateTime.MinValue*/
+                                 )); }
         }
 
-        private bool DateCheck(DateTime dateOfBirth)
-        {
-            return dateOfBirth < DateTime.Today && dateOfBirth.Year > 1883;
-        }
 
         #region Implementation
 

@@ -33,27 +33,25 @@ namespace C_Sharp_2
         {
 
             ((MainWindowViewModel) DataContext).FirstName =
-                "Your first name: " + ((MainWindowViewModel) DataContext).FirstName;
+                ((MainWindowViewModel) DataContext).FirstName;
 
             ((MainWindowViewModel) DataContext).LastName =
-                "Your last name: " + ((MainWindowViewModel) DataContext).LastName;
+                ((MainWindowViewModel) DataContext).LastName;
 
             ((MainWindowViewModel) DataContext).Email = 
-                "Your email: " + ((MainWindowViewModel) DataContext).Email;
-
-            ((MainWindowViewModel) DataContext).Date =
-                "Your date of birth: " + ((MainWindowViewModel) DataContext).Date;
+                ((MainWindowViewModel) DataContext).Email;
 
             ((MainWindowViewModel)DataContext).Adult =
-                "Your are adult!" + ((MainWindowViewModel)DataContext).Adult;
+                "Adult: " + ((MainWindowViewModel)DataContext).Adult;
 
             ((MainWindowViewModel) DataContext).SunSign =
                 "Your Sun sign is " + ((MainWindowViewModel) DataContext).SunSign;
 
             ((MainWindowViewModel) DataContext).ChineseSign =
                 "You Chinese sign is " + ((MainWindowViewModel) DataContext).ChineseSign;
+
             ((MainWindowViewModel)DataContext).Birthday =
-                "It is your b-day!" + ((MainWindowViewModel)DataContext).Birthday;
+                "Birthday: " + ((MainWindowViewModel)DataContext).Birthday;
         }
 
         public void ShowLoader(bool isShow)

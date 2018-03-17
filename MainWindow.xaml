@@ -11,11 +11,23 @@
             <ImageBrush ImageSource="C:/Users/user/Desktop/c#/background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.ColumnSpan="1" Grid.Row="1" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
@@ -24,7 +36,7 @@
         </TextBlock>
         <TextBox Grid.ColumnSpan="1" Grid.Row="2" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
                  FontStyle="Italic" FontFamily="Arial" MaxLength="25"
-                 Text="{Binding FisrtName, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                 Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <TextBlock Grid.ColumnSpan="1" Grid.Row="3" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
                    FontFamily="Arial">
@@ -32,27 +44,38 @@
         </TextBlock>
         <TextBox Grid.ColumnSpan="1" Grid.Row="4" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
                  FontStyle="Italic" FontFamily="Arial" MaxLength="25"
-                 Text="{Binding LastName, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                 Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
         <TextBlock Grid.ColumnSpan="1" Grid.Row="5" Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
                    FontFamily="Arial">
             Your email:
         </TextBlock>
         <TextBox Grid.ColumnSpan="1" Grid.Row="6" Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
-                 FontStyle="Italic" FontFamily="Arial" MaxLength="25"
-                 Text="{Binding Email, Mode: TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                 FontStyle="Italic" FontFamily="Arial" MaxLength="25"></TextBox>
 
         <StackPanel Grid.Row ="7" Grid.ColumnSpan="2" Orientation="Vertical">
-            <Label Content="Your date of birth: "></Label>
+            <Label Content="Your date of birth: " Margin="5" FontSize="20" FontWeight="Bold" FontStyle="Italic"
+                   FontFamily="Arial"></Label>
             <DatePicker SelectedDate="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="5" Background="Aqua" FontSize="20" FontWeight="Normal"
+                        FontStyle="Italic" FontFamily="Arial"
                         Text="{Binding Date, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
         </StackPanel>
 
-        <TextBlock Grid.Row="8" Text="{Binding Adult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-        <TextBlock Grid.Row="9" Text="{Binding Western, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-        <TextBlock Grid.Row="10" Text="{Binding Chinese, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-        <TextBlock Grid.Row="11" Text="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock Grid.Row="8" Text="{Binding Adult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"
+                   FontSize="20" FontWeight="Normal"
+                   FontStyle="Italic" FontFamily="Arial"></TextBlock>
+        <TextBlock Grid.Row="9" Text="{Binding SunSign, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"
+                   FontSize="20" FontWeight="Normal"
+                   FontStyle="Italic" FontFamily="Arial"></TextBlock>
+        <TextBlock Grid.Row="10" Text="{Binding ChineseSign, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"
+                    FontSize="20" FontWeight="Normal"
+                   FontStyle="Italic" FontFamily="Arial"></TextBlock>
+        <TextBlock Grid.Row="11" Text="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"
+                   FontSize="20" FontWeight="Normal"
+                   FontStyle="Italic" FontFamily="Arial"></TextBlock>
 
-        <Button Content="Proceed" Grid.ColumnSpan="1" Grid.Row="12" Margin="5" Command="{Binding ProceedCommand}" IsEnabled="{Binding CanExecute}"></Button>
+        <Button Content="Proceed" Grid.ColumnSpan="1" Grid.Row="12" Margin="5" Command="{Binding ProceedCommand}" IsEnabled="{Binding CanExecute}"
+                Background="Aqua" FontSize="20" FontWeight="Normal" FontStyle="Italic" FontFamily="Arial"></Button>
     </Grid>
 </Window>
