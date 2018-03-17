@@ -157,8 +157,8 @@ namespace C_Sharp_2
                              o => 
                                  !String.IsNullOrWhiteSpace(_firstName) &&
                                  !String.IsNullOrWhiteSpace(_lastName) &&
-                                 !String.IsNullOrWhiteSpace(_email) /*&&
-                                 _dateOfBirth != DateTime.MinValue*/
+                                 !String.IsNullOrWhiteSpace(_email) &&
+                                 _dateOfBirth != DateTime.MinValue
                                  )); }
         }
 
