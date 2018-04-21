@@ -24,7 +24,7 @@ namespace C_Sharp_2
         {
             _firstName = firstName;
             _lastName = lastName;
-            _email = email;
+            Email = email;
             _dateOfBirth = dateOfBirth;
             _age = AgeCount();
             _sun = SunZodiac();
@@ -36,17 +36,12 @@ namespace C_Sharp_2
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
-            /*
-            if (email.Length < 3 || email.Count(f => f == '@') != 1 ||
-                (email.IndexOf("@", StringComparison.Ordinal) == email.Length - 1) ||
-                (email.IndexOf("@", StringComparison.Ordinal) == 0))
-                throw new WrongEmailAddress(email);
-                */
+
         }
 
         internal string Email
         {
-            get { return _email; }
+            get => _email;
             private set
             {
                 if (new EmailAddressAttribute().IsValid(value))
@@ -242,12 +237,8 @@ namespace C_Sharp_2
 
 
     }
-    /*
-    internal class InvalidEmailException : Exception
-    {
-        public InvalidEmailException(string value) => throw new NotImplementedException();
-    }
-    */
+
+
     public class InvalidEmailException : Exception
     {
         public InvalidEmailException(string email)
@@ -289,19 +280,5 @@ namespace C_Sharp_2
             result = MessageBox.Show(message, caption, button);
     }
     }
-    /*
-    public class WrongEmailAddress : Exception
-    {
-        public WrongEmailAddress(string email)
-            : base($"Check your email address{email}")
-        {
-            string message = "Your email is wrong!";
-            string caption = "Something doesn't seem right!";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxResult result;
 
-            result = MessageBox.Show(message, caption, button);
-        }
-    }
-    */
 }
