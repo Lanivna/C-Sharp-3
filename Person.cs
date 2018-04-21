@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shell;
+using System.Text.RegularExpressions;
 
 namespace C_Sharp_2
 {
@@ -33,6 +36,24 @@ namespace C_Sharp_2
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
+            /*
+            if (email.Length < 3 || email.Count(f => f == '@') != 1 ||
+                (email.IndexOf("@", StringComparison.Ordinal) == email.Length - 1) ||
+                (email.IndexOf("@", StringComparison.Ordinal) == 0))
+                throw new WrongEmailAddress(email);
+                */
+        }
+
+        internal string Email
+        {
+            get { return _email; }
+            private set
+            {
+                if (new EmailAddressAttribute().IsValid(value))
+                    _email = value;
+                else
+                    throw new InvalidEmailException(value);
+            }
         }
 
         public Person(string firstName, string lastName, DateTime dateOfBirth)
@@ -41,6 +62,8 @@ namespace C_Sharp_2
             _lastName = lastName;
             _dateOfBirth = dateOfBirth;
         }
+
+ 
 
         public DateTime DateOfBirth
         {
@@ -56,17 +79,16 @@ namespace C_Sharp_2
             if ((_dateOfBirth.Month > DateTime.Today.Month) ||
                 (_dateOfBirth.Month == DateTime.Today.Month && _dateOfBirth.Day > DateTime.Today.Day))
             { _age--; }
-            if ((_age < 0) || (_age > 135))
+            if (_age < 0)
             {
-                string message = "You didn't enter your birthday right.";
-                string caption = "Something doesn't seem right!";
-                MessageBoxButton button = MessageBoxButton.OK;
-                MessageBoxResult result;
-
-                result = MessageBox.Show(message, caption, button);
-
+                throw new BdayInFutureException(DateOfBirth);
             }
 
+            if (_age > 135)
+            {
+                throw new DeadPersonException(DateOfBirth); 
+    }
+            
             return _age;
         }
 
@@ -220,4 +242,66 @@ namespace C_Sharp_2
 
 
     }
+    /*
+    internal class InvalidEmailException : Exception
+    {
+        public InvalidEmailException(string value) => throw new NotImplementedException();
+    }
+    */
+    public class InvalidEmailException : Exception
+    {
+        public InvalidEmailException(string email)
+            : base($"Check your email, please{email}")
+        {
+            string message = "Check your email, please.";
+            string caption = "Something doesn't seem right!";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(message, caption, button);
+        }
+    }
+    public class BdayInFutureException : Exception
+    {
+        public BdayInFutureException(DateTime dateOfBirth)
+            : base( $"You are too young!{dateOfBirth}")
+
+        {
+            string message = "Oh, boy! You are too young to be alive.";
+            string caption = "Something doesn't seem right!";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(message, caption, button);
+        }
+    }
+
+    public class DeadPersonException : Exception
+    {
+         public DeadPersonException(DateTime dateOfBirth)
+            :base( $"You are too old!{dateOfBirth}")
+          {
+            string message = "Oh, boy! You are too old to be alive.";
+            string caption = "Something doesn't seem right!";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(message, caption, button);
+    }
+    }
+    /*
+    public class WrongEmailAddress : Exception
+    {
+        public WrongEmailAddress(string email)
+            : base($"Check your email address{email}")
+        {
+            string message = "Your email is wrong!";
+            string caption = "Something doesn't seem right!";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result;
+
+            result = MessageBox.Show(message, caption, button);
+        }
+    }
+    */
 }
